@@ -8,8 +8,18 @@ client.on('ready', () => {
     client.user.setActivity('you', { type: 'WATCHING' });
 });
 
-client.on('guildMemberAdd', member => {
-    const emb = new MessageEmbed()
+client.on('message', message => {
+   if(message.embeds)
+        {
+            const embedMsg = message.embeds.find(msg=> msg.title ==='・__**verification**__');
+            if(embedMsg)
+            {
+              const filter = (reaction, user) => (reaction.emoji.name === 'unseedrops');
+
+              const collector = embedMsg.message.createReactionCollector(filter, {time: 10000});
+
+collector.on('collect', r => r.emoji.name === 'unseedrops' ?
+             const emb = new MessageEmbed()
           .setColor('#EBA8BC')
           .setTitle("welcome to __cannot unsee__ !!!")
           .setDescription("・pick up roles in <#803083923022282763> \n・read the FAQ in <#742111040774471741>")
@@ -17,7 +27,10 @@ client.on('guildMemberAdd', member => {
           .setAuthor("cannot unsee", 'https://i.imgur.com/F32i7vL.jpeg')
     const roleid = '803377899322736640'
     member.guild.channels.cache.get('803080651430559804').send(`<@&${roleid}> ${member}`, {embed: emb});
-});
+            )
+            }
+        }
+   });
 
 
 client.on('message', message => {
