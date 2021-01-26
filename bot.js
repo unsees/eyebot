@@ -14,12 +14,12 @@ client.on('message', message => {
             const embedMsg = message.embeds.find(msg=> msg.title ==='・__**verification**__');
             if(embedMsg)
             {
-              const filter = (reaction, user) => (reaction.emoji.name === 'unseedrops');
+const filter = (reaction, user) => (reaction.emoji.id === '<:unseedrops:803351692598181958>');
 
-              const collector = embedMsg.message.createReactionCollector(filter, {time: 10000});
+const collector = embedMsg.message.createReactionCollector(filter, {time: 10000});
 
-collector.on('collect', r => r.emoji.name === 'unseedrops' ?
-             const emb = new MessageEmbed()
+collector.on('collect', r => r.emoji.id === '<:unseedrops:803351692598181958>' ?
+    const emb = new MessageEmbed()
           .setColor('#EBA8BC')
           .setTitle("welcome to __cannot unsee__ !!!")
           .setDescription("・pick up roles in <#803083923022282763> \n・read the FAQ in <#742111040774471741>")
