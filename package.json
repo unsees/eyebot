@@ -1,0 +1,12 @@
+{
+  "name": "eyebot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bot.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "discord.js": "12.2.0"
+  }
+}
