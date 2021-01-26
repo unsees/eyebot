@@ -11,7 +11,7 @@ client.on('ready', () => {
 client.on('message', message => {
    if(message.embeds)
         {
-            const embedMsg = message.embeds.find(msg=> msg.title ==='・__**verification**__');
+            const embedMsg = message.guild.embeds.find(msg=> msg.title =='verification');
             if(embedMsg)
             {
 const filter = (reaction, user) => (reaction.emoji.id === '<:unseedrops:803351692598181958>');
