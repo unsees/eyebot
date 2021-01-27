@@ -16,7 +16,7 @@ client.on('guildMemberAdd', member => {
           .setFooter("boost us for special perms! ;)")
           .setAuthor("cannot unsee", 'https://i.imgur.com/F32i7vL.jpeg')
     const roleid = '803377899322736640'
-    member.guild.channels.cache.get('803080651430559804').send(`<@&${roleid}> ${member}`, {embed: emb});
+    member.guild.channels.cache.get('763388521221455872').send(`${member}`, {embed: emb});
 });
 
 client.on('message', message => {
