@@ -20,6 +20,15 @@ client.on('guildMemberAdd', member => {
 });
 
 client.on('message', message => {
+    const args = message.content.split(" ").slice(1);
+    if(message.content.startsWith('e-say') && message.guild.member(message.author).hasPermission("MANAGE_CHANNELS")) {
+        message.delete()
+        var saytext = args.join(" ");
+        message.channel.send(saytext);
+    }
+  });
+
+client.on('message', message => {
   const args = message.content.split(" ").slice(1);
   if(message.content.startsWith('e-announce') && message.guild.member(message.author).hasPermission("MANAGE_CHANNELS")) {
       message.delete()
@@ -81,8 +90,8 @@ client.on('message', message => {
 });
 
 client.on('message', message => {
-  if(message.content.startsWith('e-embedpic') && message.guild.member(message.author).hasPermission("MANAGE_CHANNELS")) {
-      let removed = message.content.replace('e-embedpic', '')
+  if(message.content.startsWith('e-picembed') && message.guild.member(message.author).hasPermission("MANAGE_CHANNELS")) {
+      let removed = message.content.replace('e-picembed', '')
       let emb = new MessageEmbed()
           .setColor('#EBA8BC')
           .setDescription(removed)
