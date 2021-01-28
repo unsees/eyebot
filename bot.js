@@ -8,7 +8,9 @@ client.on('ready', () => {
     client.user.setActivity('you', { type: 'WATCHING' });
 });
 
-client.on('guildMemberAdd', member => {
+client.on('guildMemberUpdate', async (oldMember, newMember) => {
+    const hadRole = oldMember.roles.find(role => role.name === 'cannot unsee');
+    const hasRole = newMember.roles.find(role => role.name === 'cannot unsee');
     const emb = new MessageEmbed()
           .setColor('#EBA8BC')
           .setTitle("welcome to __cannot unsee__ !!!")
@@ -16,7 +18,26 @@ client.on('guildMemberAdd', member => {
           .setFooter("boost us for special perms! ;)")
           .setAuthor("cannot unsee", 'https://i.imgur.com/F32i7vL.jpeg')
     const roleid = '803377899322736640'
-    member.guild.channels.cache.get('803080651430559804').send(`<@&${roleid}> ${member}`, {embed: emb});
+    newMember.guild.channels.cache.get('803080651430559804').send(`<@&${roleid}> ${newMember}`, {embed: emb});
+});
+
+client.on('guildMemberUpdate', async (oldMember, newMember) => {
+  const hadRole = oldMember.roles.find(role => role.name === 'third eyes (boosters)');
+  const hasRole = newMember.roles.find(role => role.name === 'third eyes (boosters)');
+  const emb = new MessageEmbed()
+          .setColor('#EBA8BC')
+          .setTitle(`${newMember} has boosted the server!`)
+          .setDescription(`thanks for boosting, ${newMember}. you now have the **third eyes** role!`)
+          .setFooter("boost us for special perms! ;)")
+          .setAuthor("cannot unsee", 'https://i.imgur.com/F32i7vL.jpeg')
+  if (!hadRole && hasRole) {
+    newMember.guild.channels.cache.get('788454816614449162').send(`${newMember}`, {embed:emb});
+  }
+
+  // if you want to check which members are boosted, you can check how many have the `Nitro Booster` role:
+  const boostedUsers = newMember.guild.members.array().filter(member => member.roles.find(role => role.name === 'third eyes (boosters)'));
+
+  console.log(boostedUsers.length); // how many members are boosted
 });
 
 client.on('message', message => {
