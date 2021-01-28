@@ -25,13 +25,13 @@ client.on('guildMemberUpdate', async (oldMember, newMember) => {
 
 client.on('guildMemberUpdate', (oldMember, newMember) => {
   if (oldMember.premiumSince !== newMember.premiumSince) {
-  const emb = new MessageEmbed()
+     const emb = new MessageEmbed()
           .setColor('#EBA8BC')
           .setTitle(`${newMember} has boosted the server!`)
           .setDescription(`thanks for boosting, ${newMember}. you now have the **third eyes** role!`)
           .setFooter("boost us for special perms! ;)")
           .setAuthor("cannot unsee", 'https://i.imgur.com/F32i7vL.jpeg')
-  newMember.guild.channels.cache.get('788454816614449162').send(`${newMember}`, {embed: emb});
+     newMember.guild.channels.cache.get('788454816614449162').send(`${newMember}`, {embed: emb});
   }
 });
 
