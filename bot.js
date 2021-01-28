@@ -19,7 +19,7 @@ client.on('guildMemberUpdate', async (oldMember, newMember) => {
           .setAuthor("cannot unsee", 'https://i.imgur.com/F32i7vL.jpeg')
     const roleid = '803377899322736640'
     if (!hadRole && hasRole) {
-      newMember.guild.channels.cache.get('803080651430559804').send(`<@&${roleid}> ${newMember.user.tag}`, {embed: emb});
+      newMember.guild.channels.get('803080651430559804').send(`<@&${roleid}> ${newMember.user.tag}`, {embed: emb});
     }
 });
 
@@ -31,7 +31,7 @@ client.on('guildMemberUpdate', (oldMember, newMember) => {
           .setDescription(`thanks for boosting, ${newMember.user.tag}. you now have the **third eyes** role!`)
           .setFooter("boost us for special perms! ;)")
           .setAuthor("cannot unsee", 'https://i.imgur.com/F32i7vL.jpeg')
-     newMember.guild.channels.cache.get('788454816614449162').send(`${newMember.user.tag}`, {embed: emb});
+     newMember.guild.channels.get('788454816614449162').send(`${newMember.user.tag}`, {embed: emb});
   }
 });
 
