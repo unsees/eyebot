@@ -18,7 +18,9 @@ client.on('guildMemberUpdate', async (oldMember, newMember) => {
           .setFooter("boost us for special perms! ;)")
           .setAuthor("cannot unsee", 'https://i.imgur.com/F32i7vL.jpeg')
     const roleid = '803377899322736640'
-    newMember.guild.channels.cache.get('803080651430559804').send(`<@&${roleid}> ${newMember}`, {embed: emb});
+    if (!hadRole && hasRole) {
+      newMember.guild.channels.cache.get('803080651430559804').send(`<@&${roleid}> ${newMember}`, {embed: emb});
+    }
 });
 
 client.on('guildMemberUpdate', async (oldMember, newMember) => {
