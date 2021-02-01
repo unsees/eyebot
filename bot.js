@@ -108,7 +108,7 @@ client.on('message', message => {
 });
 
 client.on('message', (message) => {
-  if (message.content.includes('discord.gg/'||'discordapp.com/invite/') && !message.guild.member(message.author).hasPermission("MANAGE_CHANNELS")) {
+  if (message.content.includes('discord.gg/'||'discordapp.com/invite/') && !message.guild.member(message.author).roles.cache.some(role => role.name === 'PMs')) {
           let badMsg = message.content;
           let badMsgChan = message.guild.channels.cache.get(message.channel.id);
           let badMsgUser = message.author;
@@ -126,6 +126,18 @@ client.on('message', (message) => {
 
        message.delete();
        message.reply("no invite links here.");
+  }
+});
+
+client.on('message', message => {
+  if(message.content.startsWith('e-disable') && message.guild.member(message.author).roles.cache.some(role => role.name === 'PMs')) {
+      let emb = new MessageEmbed()
+          .setColor('#EBA8BC')
+          .setDescription("**go to <#803680909056016454> to disable pings from this channel.**")
+          .setAuthor("cannot unsee", 'https://i.imgur.com/F32i7vL.jpeg')
+      
+      message.channel.send(emb);
+      message.delete();
   }
 });
 
