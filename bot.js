@@ -82,7 +82,8 @@ client.on('message', message => {
 
 client.on('message', message => {
     const args = message.content.split(" ").slice(1);
-    if(message.content.toLowerCase().includes("kys") || message.content.toLowerCase().includes("kill yourself")) {
+    if(message.content.toLowerCase().includes("kys") || message.content.toLowerCase().includes("kill yourself") || message.content.toLowerCase().includes("stfu")
+      || message.content.toLowerCase().includes("die")) {
        let badMsg = message.content;
        let badMsgChan = message.guild.channels.cache.get(message.channel.id);
        let badMsgUser = message.author;
