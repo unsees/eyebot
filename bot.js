@@ -81,6 +81,26 @@ client.on('message', message => {
   });
 
 client.on('message', message => {
+    const args = message.content.split(" ").slice(1);
+    if(message.content.toLowerCase().includes("kys") || message.content.toLowerCase().includes("kill yourself")) {
+       let badMsg = message.content;
+       let badMsgChan = message.guild.channels.cache.get(message.channel.id);
+       let badMsgUser = message.author;
+       let logChan = message.guild.channels.cache.find(ch => ch.name === "mods");
+
+       let log = new Discord.MessageEmbed()
+          .setColor('#ff3a71')
+          .setTitle("blacklisted word used")
+          .addField("content", badMsg, true)
+          .addField("found in", badMsgChan, true)
+          .addField("sent by", badMsgUser, true)
+          .setTimestamp()
+
+       logChan.send(log);
+    }
+  });
+
+client.on('message', message => {
   if(message.content.startsWith('e-embed') && message.guild.member(message.author).hasPermission("MANAGE_CHANNELS")) {
       let removed = message.content.replace('e-embed', '')
       let emb = new MessageEmbed()
