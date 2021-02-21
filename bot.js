@@ -91,10 +91,11 @@ client.on('message', message => {
 
        let log = new Discord.MessageEmbed()
           .setColor('#ff3a71')
-          .setTitle("blacklisted word used")
+          .setTitle("suspicious word used")
           .addField("content", badMsg, true)
           .addField("found in", badMsgChan, true)
           .addField("sent by", badMsgUser, true)
+          .setFooter("the person was not warned and their message was not deleted.")
           .setTimestamp()
 
        logChan.send(log);
