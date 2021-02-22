@@ -130,7 +130,7 @@ client.on('message', message => {
 });
 
 client.on('message', (message) => {
-  if (message.content.includes('discord.gg/'||'discordapp.com/invite/') && !message.guild.member(message.author).roles.cache.some(role => role.name === 'PMs')) {
+  if (message.content.includes('discord.gg/'||'discordapp.com/invite/') && message.channel.id != '803680886284615701' && message.channel.id != '803680866731032586') {
           let badMsg = message.content;
           let badMsgChan = message.guild.channels.cache.get(message.channel.id);
           let badMsgUser = message.author;
